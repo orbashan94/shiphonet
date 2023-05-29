@@ -3,12 +3,15 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 @import "./variables";
 @import "./navbar";
 @import "./footer";
+@import "./bannerHero";
 
 body {
   font-family: $mainFont;
+  background-color: $backgroundColor;
 }
 
 main {
