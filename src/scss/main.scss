@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -9,10 +11,12 @@
 @import "./footer";
 @import "./bannerHero";
 @import "./products";
+@import "./cart";
 
 body {
-  font-family: $mainFont;
+  font-family: "Rubik", sans-serif;
   background-color: $backgroundColor;
+  font-weight: 300;
 }
 
 main {

@@ -1,28 +1,37 @@
 import React from "react";
-import mealImage from "../assets/images/meals/cosmin.jpeg";
+import defaultImage from "../assets/images/logo.png";
 
-const ProductCard = () => {
+const ProductCard = (props) => {
+  const price = `₪${props.price.toFixed(2)}`;
+
   return (
     <div className="product-card">
-      <img src={mealImage} alt="" />
+      <img
+        src={props.image}
+        alt=""
+        src={props?.image ? props.image : defaultImage}
+      />
 
       <div className="product-card-info">
         <div>
-          <h3>לחם מחמצת כוסמין</h3>
-          <p>
-            תוספות לבחירה: זיתים, עגבניות מיובשות, זרעים וגרעינים, שומשום,
-            צימוקים ואגוזים. לאחר ההזמנה ניצור קשר לבחירת תוספות.
-          </p>
+          <h3>{props.name}</h3>
+          <p>{props.description}</p>
         </div>
-        <h6>₪35.00</h6>
+        <h6>{price}</h6>
       </div>
-
-      <div>
-        <input type="text" placeholder="הערות/שינויים" />
+      <div className="divider"></div>
+      <div className="product-card-actions">
         <div>
           <span>כמות</span>
-          <input type="number" />
+          <input type="number" min={1} max={5} defaultValue={1} />
         </div>
+
+        <input
+          className="notes-input"
+          type="text"
+          placeholder="הערות/שינויים"
+        />
+
         <button>הוסף</button>
       </div>
     </div>
