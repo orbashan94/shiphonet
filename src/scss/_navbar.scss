@@ -32,6 +32,10 @@ header {
 
 .cart-badge {
   position: relative;
+  background-color: transparent;
+  border: none;
+  color: $backgroundColor;
+  cursor: pointer;
   .badge {
     position: absolute;
     background-color: red;
