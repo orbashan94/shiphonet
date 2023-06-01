@@ -8,7 +8,7 @@ import Cart from "./components/cart/Cart";
 import CartProvider from "./store/cart-provider";
 
 function App() {
-  const [cartIsShown, setCartIsShown] = useState(false);
+  const [cartIsShown, setCartIsShown] = useState(true);
 
   return (
     <CartProvider>
