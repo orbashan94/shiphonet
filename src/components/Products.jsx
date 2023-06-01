@@ -1,4 +1,5 @@
 import React from "react";
+
 import ProductCard from "./ProductCard";
 
 const DUMMY_MEALS = [
@@ -80,7 +81,7 @@ const DUMMY_MEALS = [
   },
 ];
 
-const Products = () => {
+const Products = ({ setDisplayDialog, setImage }) => {
   const mealsList = DUMMY_MEALS.map((meal) => (
     <ProductCard
       id={meal.id}
@@ -89,8 +90,8 @@ const Products = () => {
       description={meal.description}
       price={meal.price}
       image={meal.image ? meal.image : null}
-      // setDisplayDialog={setDisplayDialog}
-      // setImage={setImage}
+      setDisplayDialog={setDisplayDialog}
+      setImage={setImage}
     />
   ));
 

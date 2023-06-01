@@ -4,13 +4,14 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import BannerHero from "./components/BannerHero";
 import Products from "./components/Products";
-import Cart from "./components/Cart";
+import Cart from "./components/cart/Cart";
+import CartProvider from "./store/cart-provider";
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
 
   return (
-    <>
+    <CartProvider>
       <Navbar setCartIsShown={setCartIsShown} />
       <main>
         <BannerHero />
@@ -18,7 +19,7 @@ function App() {
         {cartIsShown && <Cart setCartIsShown={setCartIsShown} />}
       </main>
       <Footer />
-    </>
+    </CartProvider>
   );
 }
 

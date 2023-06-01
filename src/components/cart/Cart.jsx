@@ -1,6 +1,36 @@
 import React from "react";
+import CartContext from "../../store/cart-context";
+import CartItem from "./CartItem";
+import { useContext } from "react";
 
 const Cart = ({ setCartIsShown }) => {
+  const cartCtx = useContext(CartContext);
+
+  const totalAmount = `₪${cartCtx.totalAmount.toFixed(2)}`;
+
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
+
+  const cartItemAddHandler = (item) => {
+    cartCtx.addItem({ ...item, amount: 1 });
+  };
+
+  const cartItems = (
+    <ul>
+      {cartCtx.items.map((item) => (
+        <CartItem
+          key={item.id}
+          name={item.name}
+          amount={item.amount}
+          price={item.price}
+          onRemove={cartItemRemoveHandler.bind(null, item.id)}
+          onAdd={cartItemAddHandler.bind(null, item)}
+        />
+      ))}
+    </ul>
+  );
+
   return (
     <div
       className="cart-popup-overlay"
@@ -14,10 +44,10 @@ const Cart = ({ setCartIsShown }) => {
           e.stopPropagation();
         }}
       >
-        <div className="cart-products-list">products</div>
+        <div className="cart-products-list">{cartItems}</div>
         <div>
           <span>סך הזמנה</span>
-          <span>59₪</span>
+          <span>{totalAmount}</span>
           <form action="">
             <label>שם מלא</label>
             <input
