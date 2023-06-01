@@ -1,0 +1,23 @@
+.cart-popup-overlay {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .cart-container {
+    background-color: $backgroundProductsColor;
+    padding: 30px 15px;
+    border-radius: 20px;
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
