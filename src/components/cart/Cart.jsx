@@ -1,10 +1,16 @@
 import React from "react";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+
+import emailjs from "emailjs-com";
 
 const Cart = ({ setCartIsShown }) => {
   const cartCtx = useContext(CartContext);
+  const [userName, setUserName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [date, setDate] = useState("");
+  const [isOrderSubmitted, setIsOrderSubmitted] = useState(false);
 
   const totalAmount = `₪${cartCtx.totalAmount.toFixed(2)}`;
 
@@ -32,56 +38,135 @@ const Cart = ({ setCartIsShown }) => {
     </ul>
   );
 
+  const renderProductTable = () => {
+    let output = "";
+    for (let i = 0; i < cartCtx.items.length; i++) {
+      output += `<tr>
+                  <th>${i + 1}</th>
+                  <th>${cartCtx.items[i].name}</th>
+                  <th>${cartCtx.items[i].note}</th>
+                  <th>${cartCtx.items[i].amount}</th>
+                  <th>${cartCtx.items[i].price}</th>
+                </tr>`;
+    }
+    let table = `
+                          <table>
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Product</th>
+                                    <th>Note</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                ${output}
+                                </tbody>
+                                </table>
+                                `;
+
+    console.log(table);
+    return table;
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    if (cartCtx.items.length == 0) return;
+    let table = renderProductTable();
+    let formData = new FormData();
+    formData.append("user_name", userName);
+    formData.append("user_phone", phone);
+    formData.append("order_date", date);
+    formData.append("table", table);
+    formData.append("total_order", cartCtx.totalAmount.toFixed(2));
+    console.log(formData);
+
+    const form = document.createElement("form");
+    formData.forEach((value, key) => {
+      const field = document.createElement("input");
+      field.setAttribute("type", "hidden");
+      field.setAttribute("name", key);
+      field.setAttribute("value", value);
+      form.appendChild(field);
+    });
+
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
+        form,
+        process.env.REACT_APP_PUBLIC_KEY,
+        table
+      )
+      .then(
+        setIsOrderSubmitted(true),
+        (result) => console.log(result.text),
+        (error) => console.log(error.text)
+      );
+
+    e.target.reset();
+  };
+
   return (
-    <div
-      className="cart-popup-overlay"
-      onClick={() => {
-        setCartIsShown(false);
-      }}
-    >
-      <div
-        className="cart-container"
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        <div className="cart-products-list">{cartItems}</div>
+    <>
+      {isOrderSubmitted ? (
         <div>
-          <span>סך הזמנה</span>
-          <span>{totalAmount}</span>
-          <form action="">
-            <label>שם מלא</label>
-            <input
-              type="text"
-              name="user_name"
-              required
-              // onChange={(e) => setUserName(e.target.value)}
-            />
-            <label>מס' טלפון</label>
-            <input
-              type="number"
-              name="user_phone"
-              required
-              // onChange={(e) => setPhone(e.target.value)}
-            />
-            <input type="hidden" name="table" />
-            <label>למתי הזמנה?</label>
-            <select
-            // onChange={(e) => {
-            //   setDate(e.target.value);
-            // }}
-            >
-              <option value={"חמישי 18/5"}>חמישי 1/6</option>
-              <option value={"שישי 19/5"}>שישי 2/6</option>
-            </select>
-            <div>
-              <button>סגור</button>
-              <button type="submit">הזמן</button>
-            </div>
-          </form>
+          <h2>!תודה על הזמנתך</h2>
+          <h3> :) יצרו עמך קשר בשעות הקרובות</h3>
         </div>
-      </div>
-    </div>
+      ) : (
+        <div
+          className="cart-popup-overlay"
+          onClick={() => {
+            setCartIsShown(false);
+          }}
+        >
+          <div
+            className="cart-container"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <div className="cart-products-list">{cartItems}</div>
+            <div>
+              <span>סך הזמנה</span>
+              <span>{totalAmount}</span>
+              <form onSubmit={sendEmail}>
+                <label>שם מלא</label>
+                <input
+                  type="text"
+                  name="user_name"
+                  required
+                  onChange={(e) => setUserName(e.target.value)}
+                />
+                <label>מס' טלפון</label>
+                <input
+                  type="number"
+                  name="user_phone"
+                  required
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+                <input type="hidden" name="table" />
+                <label>למתי הזמנה?</label>
+                <select
+                  onChange={(e) => {
+                    setDate(e.target.value);
+                  }}
+                >
+                  <option value={"חמישי 18/5"}>חמישי 1/6</option>
+                  <option value={"שישי 19/5"}>שישי 2/6</option>
+                </select>
+                <div>
+                  <button>סגור</button>
+                  <button type="submit">הזמן</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
