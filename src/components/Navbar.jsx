@@ -1,8 +1,16 @@
 import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import logo from "../assets/images/logo.png";
+import CartContext from "../store/cart-context";
+import { useContext } from "react";
 
 const Navbar = ({ setCartIsShown }) => {
+  const cartCtx = useContext(CartContext);
+  let totalItems = 0;
+  const cartItemsNumber = cartCtx.items.forEach((item) => {
+    totalItems += item.amount;
+  });
+
   return (
     <header>
       <nav className="navbar">
@@ -13,7 +21,7 @@ const Navbar = ({ setCartIsShown }) => {
             setCartIsShown(true);
           }}
         >
-          <span className="badge">1</span>
+          {totalItems > 0 && <span className="badge">{totalItems}</span>}
           <ShoppingCartIcon style={{ fontSize: "30px" }} />
         </button>
       </nav>

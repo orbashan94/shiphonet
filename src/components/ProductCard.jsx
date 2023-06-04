@@ -7,6 +7,7 @@ import defaultImage from "../assets/images/logo.png";
 const ProductCard = (props) => {
   //const [amountIsValid, setAmountIsValid] = useState(true);
   const [amount, setAmount] = useState(1);
+  const [note, setnote] = useState("");
   const cartCtx = useContext(CartContext);
 
   const price = `₪${props.price.toFixed(2)}`;
@@ -26,15 +27,21 @@ const ProductCard = (props) => {
       name: props.name,
       amount: amount,
       price: props.price,
+      note: note,
     });
+  };
+
+  const openImage = () => {
+    props.setImage(props.image);
+    props.setDisplayDialog(true);
   };
 
   return (
     <div className="product-card">
       <img
-        src={props.image}
         alt=""
         src={props?.image ? props.image : defaultImage}
+        onClick={() => openImage()}
       />
 
       <div className="product-card-info">
@@ -56,7 +63,7 @@ const ProductCard = (props) => {
             max={5}
             value={amount}
             onChange={(e) => {
-              setAmount(e.target.value);
+              setAmount(Number(e.target.value));
             }}
           />
         </div>
@@ -65,6 +72,9 @@ const ProductCard = (props) => {
           className="notes-input"
           type="text"
           placeholder="הערות/שינויים"
+          onChange={(e) => {
+            setnote(e.target.value);
+          }}
         />
 
         <button onClick={addProduct}>הוסף</button>

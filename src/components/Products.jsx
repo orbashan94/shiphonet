@@ -9,14 +9,14 @@ const DUMMY_MEALS = [
     description:
       "תוספות לבחירה: זיתים, עגבניות מיובשות, זרעים וגרעינים, שומשום, צימוקים ואגוזים. לאחר ההזמנה ניצור קשר לבחירת תוספות.",
     price: 35,
-    // image: "meals/cosmin.jpeg",
+    image: "meals/cosmin.jpeg",
   },
   {
     id: "m2",
     name: "פרסבורגר פרג",
     description: "לאוהבי הפרג עוגה קלאסית מפנקת ומפוצצת בפרג לימוני",
     price: 60,
-    // image: "meals/pereg.jpeg",
+    image: "/meals/pereg.jpeg",
   },
 
   {

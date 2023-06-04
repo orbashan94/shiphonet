@@ -9,7 +9,7 @@ const CartItem = (props) => {
 
       <div className="cart-item-details">
         <h2>{props.name}</h2>
-        <p>ללא זיתים ובצל</p>
+        <p>{props.note}</p>
         <div className="cart-item-price">
           <span>{price}</span>
           <span>x {props.amount}</span>

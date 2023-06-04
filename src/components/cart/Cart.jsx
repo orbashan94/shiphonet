@@ -24,6 +24,7 @@ const Cart = ({ setCartIsShown }) => {
           name={item.name}
           amount={item.amount}
           price={item.price}
+          note={item.note}
           onRemove={cartItemRemoveHandler.bind(null, item.id)}
           onAdd={cartItemAddHandler.bind(null, item)}
         />
