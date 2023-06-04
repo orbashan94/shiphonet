@@ -55,7 +55,7 @@ const ProductCard = (props) => {
       <div className="divider"></div>
 
       <div className="product-card-actions">
-        <div>
+        <div className="qty">
           <span>כמות</span>
           <input
             type="number"

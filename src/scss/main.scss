@@ -23,3 +23,18 @@ body {
 main {
   min-height: 95rem;
 }
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.input {
+  background-color: rgba(247, 194, 103, 0.2);
+  border: none;
+  border-bottom: 0.5px solid lightgray;
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}

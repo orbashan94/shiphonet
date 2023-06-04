@@ -2,10 +2,11 @@ import React from "react";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
 import { useContext, useState } from "react";
+import { TextField } from "@mui/material";
 
 import emailjs from "emailjs-com";
 
-const Cart = ({ setCartIsShown }) => {
+const Cart = (props) => {
   const cartCtx = useContext(CartContext);
   const [userName, setUserName] = useState("");
   const [phone, setPhone] = useState("");
@@ -119,7 +120,7 @@ const Cart = ({ setCartIsShown }) => {
         <div
           className="cart-popup-overlay"
           onClick={() => {
-            setCartIsShown(false);
+            props.setCartIsShown(false);
           }}
         >
           <div
@@ -130,36 +131,49 @@ const Cart = ({ setCartIsShown }) => {
           >
             <div className="cart-products-list">{cartItems}</div>
             <div>
-              <span>סך הזמנה</span>
+              <span> סך הזמנה </span>
               <span>{totalAmount}</span>
               <form onSubmit={sendEmail}>
-                <label>שם מלא</label>
-                <input
-                  type="text"
-                  name="user_name"
-                  required
-                  onChange={(e) => setUserName(e.target.value)}
-                />
-                <label>מס' טלפון</label>
-                <input
-                  type="number"
-                  name="user_phone"
-                  required
-                  onChange={(e) => setPhone(e.target.value)}
-                />
+                <div className="input-group">
+                  <label>שם מלא</label>
+                  <input
+                    className="input"
+                    type="text"
+                    name="user_name"
+                    required
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                </div>
+                <div className="input-group">
+                  <label>מס' טלפון</label>
+                  <input
+                    className="input"
+                    type="number"
+                    name="user_phone"
+                    required
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </div>
+
                 <input type="hidden" name="table" />
-                <label>למתי הזמנה?</label>
-                <select
-                  onChange={(e) => {
-                    setDate(e.target.value);
-                  }}
-                >
-                  <option value={"חמישי 18/5"}>חמישי 1/6</option>
-                  <option value={"שישי 19/5"}>שישי 2/6</option>
-                </select>
-                <div>
-                  <button>סגור</button>
-                  <button type="submit">הזמן</button>
+                <div className="input-group">
+                  <label>למתי הזמנה?</label>
+                  <select
+                    className="input"
+                    onChange={(e) => {
+                      setDate(e.target.value);
+                    }}
+                  >
+                    <option value={"חמישי 18/5"}>חמישי 1/6</option>
+                    <option value={"שישי 19/5"}>שישי 2/6</option>
+                  </select>
+                </div>
+
+                <div className="cart-btn">
+                  <button onClick={props.onClose}>סגור</button>
+                  <button id="submit-btn" type="submit">
+                    הזמן
+                  </button>
                 </div>
               </form>
             </div>

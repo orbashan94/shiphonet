@@ -14,6 +14,10 @@ function App() {
   const [displayDialog, setDisplayDialog] = useState(false);
   const [image, setImage] = useState("");
 
+  const hideCartHandler = () => {
+    setCartIsShown(false);
+  };
+
   return (
     <CartProvider>
       <Navbar setCartIsShown={setCartIsShown} />
@@ -23,7 +27,9 @@ function App() {
         {displayDialog && (
           <ImageDialog image={image} setDisplayDialog={setDisplayDialog} />
         )}
-        {cartIsShown && <Cart setCartIsShown={setCartIsShown} />}
+        {cartIsShown && (
+          <Cart setCartIsShown={setCartIsShown} onClose={hideCartHandler} />
+        )}
       </main>
       <Footer />
     </CartProvider>

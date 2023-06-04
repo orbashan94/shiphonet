@@ -7,7 +7,8 @@ import { useContext } from "react";
 const Navbar = ({ setCartIsShown }) => {
   const cartCtx = useContext(CartContext);
   let totalItems = 0;
-  const cartItemsNumber = cartCtx.items.forEach((item) => {
+
+  cartCtx.items.forEach((item) => {
     totalItems += item.amount;
   });
 
@@ -18,7 +19,9 @@ const Navbar = ({ setCartIsShown }) => {
         <button
           className="cart-badge"
           onClick={() => {
-            setCartIsShown(true);
+            if (totalItems > 0) {
+              setCartIsShown(true);
+            }
           }}
         >
           {totalItems > 0 && <span className="badge">{totalItems}</span>}
