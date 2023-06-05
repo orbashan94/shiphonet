@@ -34,6 +34,7 @@ const Cart = (props) => {
           note={item.note}
           onRemove={cartItemRemoveHandler.bind(null, item.id)}
           onAdd={cartItemAddHandler.bind(null, item)}
+          image={item.image}
         />
       ))}
     </ul>

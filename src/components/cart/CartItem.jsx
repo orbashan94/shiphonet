@@ -3,9 +3,15 @@ import defaultimage from "../../assets/images/logo.png";
 
 const CartItem = (props) => {
   const price = `₪${props.price.toFixed(2)}`;
+  let img = "./meals/";
+
+  if (!props.image) {
+    img = defaultimage;
+  }
+
   return (
     <div className="cart-item">
-      <img src={defaultimage} />
+      <img src={props.image ? img + props.image : img} />
 
       <div className="cart-item-details">
         <h2>{props.name}</h2>

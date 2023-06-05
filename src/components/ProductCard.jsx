@@ -28,6 +28,7 @@ const ProductCard = (props) => {
       amount: amount,
       price: props.price,
       note: note,
+      image: props.image,
     });
   };
 
@@ -36,11 +37,12 @@ const ProductCard = (props) => {
     props.setDisplayDialog(true);
   };
 
+  const img = "/meals/";
   return (
     <div className="product-card">
       <img
         alt=""
-        src={props?.image ? props.image : defaultImage}
+        src={props?.image ? img + props.image : defaultImage}
         onClick={() => openImage()}
       />
 
