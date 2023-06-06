@@ -166,7 +166,6 @@ const Cart = (props) => {
                     }}
                   >
                     <option value={"חמישי 8/6"}>חמישי 8/6</option>
-                    <option value={"שישי 9/6"}>שישי 9/6</option>
                   </select>
                 </div>
 
