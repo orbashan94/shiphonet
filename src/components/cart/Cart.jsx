@@ -165,8 +165,8 @@ const Cart = (props) => {
                       setDate(e.target.value);
                     }}
                   >
-                    <option value={"חמישי 18/5"}>חמישי 1/6</option>
-                    <option value={"שישי 19/5"}>שישי 2/6</option>
+                    <option value={"חמישי 8/6"}>חמישי 8/6</option>
+                    <option value={"שישי 9/6"}>שישי 9/6</option>
                   </select>
                 </div>
 

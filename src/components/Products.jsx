@@ -18,67 +18,44 @@ const DUMMY_MEALS = [
     price: 60,
     image: "pereg.jpeg",
   },
-
   {
     id: "m3",
-    name: "סטיקי באן",
-    description:
-      "מאפה נימוח ואוורירי בטעמי קינמון ודבש עם פקאנים קלויים (מומלץ להזמין לפחות שתיים).",
-    price: 10,
-    // image: "meals/ban.jpeg",
-  },
-
-  {
-    id: "m4",
     name: " שמרים שוקולד ",
     description: "עשירה בשוקולד איכותי",
     price: 55,
-    // image: "shmarim-shoko.jpeg",
+    image: "shmarim-shoko.jpeg",
+  },
+  {
+    id: "m4",
+    name: "בחושה מייפל פקאן",
+    description: "אוורירית ורכה עם מעטה קריספי של סוכר חום ופקאנים קלויים",
+    price: 45,
+    image: "pekan2.jpeg",
   },
 
   {
     id: "m5",
-    name: "שמרים ריקוטה",
-    description: "בצק שמרים במילוי גבינה וצימוקים",
-    price: 55,
-    // image: "meals/shmarim-rikota.jpeg",
-  },
-
-  {
-    id: "m6",
-    name: "בחושה מייפל פקאן",
-    description: "אוורירית ורכה עם מעטה קריספי של סוכר חום ופקאנים קלויים",
-    price: 45,
-    // image: "meals/pekan.jpeg",
-  },
-
-  {
-    id: "m7",
     name: "פוגאס אישי",
     description:
       "מאפה מבוסס קמחים מלאים ומחמצת 100% בתוספת גבינות ועשבי תיבול/אריסה",
     price: 15,
-    // image: "meals/fugas.jpeg",
+    image: "fugas.jpeg",
   },
   {
-    id: "m8",
-    name: "עוגיית פאדג שוקולד",
-    description: "עשירה ונימוחה לאוהבי השוקולד (העוגייה גדולה יותר מהתמונה)",
+    id: "m6",
+    name: "עוגיית שוקולד צ’יפס",
+    description:
+      "עוגייה נימוחה מלאה בשלושה סוגי שוקולד",
     price: 10,
-    // image: "meals/fadg-shokolad.jpeg",
+    image: "shoko-chips.jpeg",
   },
   {
-    id: "m9",
-    name: "בחושה קוקוס תפוז",
-    description: "עסיסית ועשירה בטעמי תפוז",
-    price: 45,
-  },
-  {
-    id: "m10",
+    id: "m7",
     name: "פרסבורגר אגוזים",
     description: "מאפה שמרים ממולא במלית אגוזי מלך לימונית",
     price: 60,
   },
+
 ];
 
 const Products = ({ setDisplayDialog, setImage }) => {
