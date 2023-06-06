@@ -12,12 +12,17 @@
   .dialog {
     width: 70%;
     height: auto;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img {
-      width: 100%;
+      width: 40%;
       object-fit: contain;
       border-radius: 15px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.754);
+      @media only screen and (max-width: 800px) {
+      width: 100%;
+      }
     }
   }
 }
