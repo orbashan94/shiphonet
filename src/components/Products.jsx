@@ -13,10 +13,10 @@ const DUMMY_MEALS = [
   },
   {
     id: "m2",
-    name: "פרסבורגר פרג",
-    description: "לאוהבי הפרג עוגה קלאסית מפנקת ומפוצצת בפרג לימוני",
-    price: 60,
-    image: "pereg.jpeg",
+    name: "פס פרג",
+    description: "עוגת פרג (רק פרג) מיוחדת במינה",
+    price: 55,
+    image: "pereg2.jpeg",
   },
   {
     id: "m3",
@@ -32,17 +32,32 @@ const DUMMY_MEALS = [
     price: 45,
     image: "pekan2.jpeg",
   },
-
   {
     id: "m5",
+    name: "פרסבורגר אגוזים",
+    description: "מאפה שמרים ממולא במלית אגוזי מלך לימונית",
+    price: 60,
+    image: "fres.jpeg",
+  },
+  {
+    id: "m6",
+    name: "סטיקי באן",
+    description: "מאפה שמרים עם קינמון דבש ופקאנים - 15₪ לשבלול (ניתן להזמין כעוגה אחת -50₪)",
+    price: 15,
+    image: "sticky.jpeg",
+  },
+
+  {
+    id: "m7",
     name: "פוגאס אישי",
     description:
       "מאפה מבוסס קמחים מלאים ומחמצת 100% בתוספת גבינות ועשבי תיבול/אריסה",
     price: 15,
     image: "fugas.jpeg",
   },
+  
   {
-    id: "m6",
+    id: "m8",
     name: "עוגיית שוקולד צ’יפס",
     description:
       "עוגייה נימוחה מלאה בשלושה סוגי שוקולד",
@@ -50,10 +65,11 @@ const DUMMY_MEALS = [
     image: "shoko-chips.jpeg",
   },
   {
-    id: "m7",
-    name: "פרסבורגר אגוזים",
-    description: "מאפה שמרים ממולא במלית אגוזי מלך לימונית",
-    price: 60,
+    id: "m9",
+    name: "עוגיית פאדג שוקולד",
+    description: "עשירה ונימוחה לאוהבי השוקולד (העוגייה גדולה יותר מהתמונה)",
+    price: 10,
+    image: "fadj2.jpeg",
   },
 
 ];
